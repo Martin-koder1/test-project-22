@@ -33,7 +33,11 @@ for (let index = 0; index < myCatFacts.length; index++) {
 //
 //
 
-async function getApiData () {
+const getCatFats = document.querySelector("#MakeListButton")
+
+
+getCatFats.addEventListener ("click", async function getApiData () {
+    getCatFats.remove();
     // A variable that is waiting for a respone from the URL-adress.
     const response = await fetch("https://catfact.ninja/facts")
     console.log(response);
@@ -51,12 +55,12 @@ async function getApiData () {
     for (let index = 0; index < catFact.length; index++) {
         console.log(catFact[index].fact);
     
-        const p = document.createElement("p");
-        p.textContent = catFact[index].fact;
+        const text = document.createElement("li");
+        text.textContent = catFact[index].fact;
     
-        const main = document.querySelector("main")
-        main.appendChild(p);
+        const main = document.querySelector("#MainList")
+        main.appendChild(text);
     }
-};
+});
 
 getApiData();
